@@ -4,6 +4,7 @@ import styles from './PromptInput.module.css';
 export const PromptInput = ({ prompt }) => {
     const [value, setValue] = useState('');
     const [imageURLs, setImageURLs] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null);
     const [loading, setLoading] = useState(false);
     const [showToast, setShowToast] = useState(false);
   
@@ -39,22 +40,40 @@ export const PromptInput = ({ prompt }) => {
       }
     }, [showToast]);
   
+    const selectImage = (url) => {
+      setSelectedImage(url);
+    };
+  
     return (
       <div className={styles.inputWrapper}>
         <input
-          className={styles.titleColorBorder} 
+          className={styles.titleColorBorder}
           value={value}
-          placeholder={prompt}
+          placeholder={selectedImage ? 'Edit this image' : prompt}
           onChange={(e) => setValue(e.target.value)}
           onKeyPress={handleSubmit}
         />
         {loading && <div className={styles.loading}>Generating image...</div>}
         {showToast && <div className={styles.toast}>Image generated!</div>}
-        <div className={styles.imageGrid}>
-          {imageURLs.map((url, index) => (
-            <img key={index} src={url} alt={`Generated ${index}`} className={styles.generatedImage} />
-          ))}
-        </div>
+        {selectedImage ? (
+          <img
+            src={selectedImage}
+            alt="Selected for editing"
+            className={styles.selectedImage}
+          />
+        ) : (
+          <div className={styles.imageGrid}>
+            {imageURLs.map((url, index) => (
+              <img
+                key={index}
+                src={url}
+                alt={`Generated ${index}`}
+                className={styles.generatedImage}
+                onClick={() => selectImage(url)}
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
 };

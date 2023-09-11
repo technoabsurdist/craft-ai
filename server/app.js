@@ -4,7 +4,7 @@ const app = express();
 const axios = require('axios');
 require('dotenv').config();
 
-const API_KEY = process.env.API_KEY;
+const KEY = process.env.API_KEY;
 
 app.use(express.json());
 app.use(cors({
@@ -28,7 +28,7 @@ app.post('/generate_image', async (req, res) => {
 
   
 async function generateImage(prompt) {
-    const API_KEY = API_KEY;
+    const API_KEY = KEY;
     const url = 'https://api.openai.com/v1/images/generations';
   
     const headers = {
