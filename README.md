@@ -1,4 +1,4 @@
-# Prompt-Controlled Image Editing
+# 🖌️ Craft AI
 
 ## Overview
 
