@@ -13,8 +13,8 @@
   margin-top: 2rem;
   zoom: 0.3;
   position: absolute;
-  bottom: 5rem;
-  margin-right: 4rem; 
+  top: 5rem;
+  right: 10rem; 
 }
 .title a {
   color: rgb(17, 54, 190);

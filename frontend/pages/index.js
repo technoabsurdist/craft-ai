@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>AI Image Editor</title>
+        <title>Craft AI</title>
       </Head>
 
       <main>
