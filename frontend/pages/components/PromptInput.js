@@ -41,8 +41,10 @@ export const PromptInput = ({ prompt }) => {
     }, [showToast]);
   
     const selectImage = (url) => {
-      setSelectedImage(url);
+      setSelectedImage(selectedImage === url ? null : url);
     };
+    
+    
   
     return (
       <div className={styles.inputWrapper}>
@@ -55,25 +57,15 @@ export const PromptInput = ({ prompt }) => {
         />
         {loading && <div className={styles.loading}>Generating image...</div>}
         {showToast && <div className={styles.toast}>Image generated!</div>}
-        {selectedImage ? (
-          <img
-            src={selectedImage}
-            alt="Selected for editing"
-            className={styles.selectedImage}
-          />
-        ) : (
-          <div className={styles.imageGrid}>
-            {imageURLs.map((url, index) => (
-              <img
-                key={index}
-                src={url}
-                alt={`Generated ${index}`}
-                className={styles.generatedImage}
-                onClick={() => selectImage(url)}
-              />
-            ))}
-          </div>
-        )}
+        <div className={styles.imageGrid}>
+          {selectedImage ? (
+            <img src={selectedImage} alt="Selected" className={styles.selectedImage} onClick={() => selectImage(selectedImage)} />
+          ) : (
+            imageURLs.map((url, index) => (
+              <img key={index} src={url} alt={`Generated ${index}`} className={styles.generatedImage} onClick={() => selectImage(url)} />
+            ))
+          )}
+        </div>
       </div>
     );
 };

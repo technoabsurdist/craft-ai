@@ -72,3 +72,9 @@
   margin-top: 20px;
 }
 
+.selectedImage {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
