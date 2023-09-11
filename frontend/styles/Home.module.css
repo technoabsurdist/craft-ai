@@ -6,10 +6,25 @@
   justify-content: center;
   align-items: center;
 }
-
+.githubIcon {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+  zoom: 0.3;
+  position: absolute;
+  bottom: 5rem;
+  margin-right: 4rem; 
+}
 .title a {
-  color: #0070f3;
+  color: rgb(17, 54, 190);
   text-decoration: none;
+}
+
+.emojiTitle {
+  zoom: 0.75;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem; 
 }
 
 .title a:hover,
@@ -19,8 +34,8 @@
 }
 
 .title {
-  margin: 0 0 1rem;
-  line-height: 1.15;
+  margin: 0 0 0rem;
+  line-height: 1.2;
   font-size: 3.6rem;
 }
 
@@ -84,9 +99,17 @@
   height: 1em;
 }
 
+.description {
+  line-height: 1.5;
+  font-size: 1.2rem;
+  max-width: 40%;
+  color: #757575;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
 }
+

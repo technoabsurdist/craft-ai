@@ -3,7 +3,6 @@ import styles from './PromptInput.module.css';
 
 export const PromptInput = ({ prompt }) => {
     const [value, setValue] = useState('');
-    const [imageURLs, setImageURLs] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageData, setImageData] = useState([]);
     const [loading, setLoading] = useState(false);

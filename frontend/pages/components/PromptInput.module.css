@@ -85,7 +85,7 @@
 
 .hoverEffect:hover {
   transform: scale(1.03);
-  filter: brightness(50%);
+  filter: brightness(60%);
 }
 
 .hoverText {
@@ -94,11 +94,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  max-width: 80%;
   visibility: hidden;
 }
 
 .hoverEffect:hover .hoverText {
   visibility: visible;
 }
+
+
+
 
 
