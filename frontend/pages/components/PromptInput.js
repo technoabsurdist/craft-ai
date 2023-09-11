@@ -5,6 +5,7 @@ export const PromptInput = ({ prompt }) => {
     const [value, setValue] = useState('');
     const [imageURLs, setImageURLs] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [imageData, setImageData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showToast, setShowToast] = useState(false);
   
@@ -20,10 +21,9 @@ export const PromptInput = ({ prompt }) => {
         fetch('http://localhost:5001/generate_image', options)
           .then((response) => response.json())
           .then((response) => {
-            setImageURLs([...imageURLs, response.image_url]);
+            setImageData([...imageData, { url: response.image_url, prompt: value }]);
             setLoading(false);
-            setShowToast(true);
-            setValue(''); // Reset the input value
+            setValue('');
           })
           .catch((err) => {
             console.error(err);
@@ -59,10 +59,13 @@ export const PromptInput = ({ prompt }) => {
         {showToast && <div className={styles.toast}>Image generated!</div>}
         <div className={styles.imageGrid}>
           {selectedImage ? (
-            <img src={selectedImage} alt="Selected" className={styles.selectedImage} onClick={() => selectImage(selectedImage)} />
+            <img src={selectedImage.url} alt="Selected" className={styles.selectedImage} onClick={() => selectImage(null)} />
           ) : (
-            imageURLs.map((url, index) => (
-              <img key={index} src={url} alt={`Generated ${index}`} className={styles.generatedImage} onClick={() => selectImage(url)} />
+            imageData.map((data, index) => (
+              <div className={styles.hoverEffect} onClick={() => selectImage(data)} key={index}>
+                <img src={data.url} alt={`Generated ${index}`} className={styles.generatedImage} />
+                <div className={styles.hoverText}>{data.prompt}</div>
+              </div>
             ))
           )}
         </div>

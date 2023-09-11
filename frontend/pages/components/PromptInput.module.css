@@ -78,3 +78,27 @@
   cursor: pointer;
 }
 
+.hoverEffect {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.hoverEffect:hover {
+  transform: scale(1.03);
+  filter: brightness(50%);
+}
+
+.hoverText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  visibility: hidden;
+}
+
+.hoverEffect:hover .hoverText {
+  visibility: visible;
+}
+
+
