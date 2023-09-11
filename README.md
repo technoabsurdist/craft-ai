@@ -1,4 +1,4 @@
-# Craft AI
+# 🖌️ Craft AI
 
 ## Overview
 
